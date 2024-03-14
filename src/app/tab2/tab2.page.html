@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Preview
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="row">
+    <ion-button (click)="savePicture()" class="col-6 m-0 p-3">Save image</ion-button>
+    <!-- <ion-button (click)="checkImage()" class="col-4 m-0 p-3">Check image</ion-button> -->
+    <ion-button (click)="takePicture()" class="col-6 m-0 p-3">New picture</ion-button>
+  </div>
+  <div class="m-3" *ngIf="image">
+    <a download="base64String" [href]="image.base64String"><img id="image" [src]="image.base64String"></a>
+  </div>
+</ion-content>

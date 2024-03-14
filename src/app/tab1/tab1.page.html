@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Exif data
+    </ion-title>
+    <ion-buttons slot="end">
+
+      <ion-button (click)="setMetadata()">Set</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngIf="(imageMetadataSelected.length + exifMetadataSelected.length + gpsMetadataSelected.length) === 0">
+      <ion-label>No metadata selected</ion-label>
+    </ion-item>
+    <!-- Image metadata list -->
+    <ion-item-group *ngIf="imageMetadataSelected.length > 0">
+      <ion-item-divider>
+        <ion-label>Image metadata</ion-label>
+      </ion-item-divider>
+      <app-property-row
+        *ngFor="let item of imageMetadataSelected"
+        [propertyName]="item"
+        propertyGroup="0th"
+        [propertyNumber]="metadataNameToNumber(item)"
+        [(metadata)]="metadata"
+      ></app-property-row>
+    </ion-item-group>
+    <!-- Exif metadata list -->
+    <ion-item-group *ngIf="exifMetadataSelected.length > 0">
+      <ion-item-divider>
+        <ion-label>Exif metadata</ion-label>
+      </ion-item-divider>
+      <app-property-row
+        *ngFor="let item of exifMetadataSelected"
+        [propertyName]="item"
+        propertyGroup="Exif"
+        [propertyNumber]="metadataNameToNumber(item)"
+        [(metadata)]="metadata"
+      ></app-property-row>
+    </ion-item-group>
+    <!-- GPS Metadata list -->
+    <ion-item-group *ngIf="gpsMetadataSelected.length > 0">
+      <ion-item-divider>
+        <ion-label>GPS metadata</ion-label>
+      </ion-item-divider>
+      <app-property-row
+        *ngFor="let item of gpsMetadataSelected"
+        [propertyName]="item"
+        propertyGroup="GPS"
+        [propertyNumber]="metadataNameToNumber(item)"
+        [(metadata)]="metadata"
+      ></app-property-row>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">
+      Settings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <!-- <ion-item>
+      <ion-toggle [(ngModel)]="geolocalizationSign">Enable geolocalization sign</ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-toggle [(ngModel)]="secured">Secure with password</ion-toggle>
+    </ion-item>
+    <ion-item *ngIf="secured">
+      <ion-input [(ngModel)]="password" label="Insert password"></ion-input>
+    </ion-item> -->
+    <ion-item class="row" (click)="openModal(imageMetadataList, imageMetadataSelected, 'imageMetadataSelected')">
+        <ion-label class="col-11 m-0 align-middle">Select image metadata</ion-label>
+        <div class="col-1">
+          <i class="fa fa-caret-up"></i>
+        </div>
+    </ion-item>
+    <ion-item class="row" (click)="openModal(exifMetadataList, exifMetadataSelected, 'exifMetadataSelected')">
+        <ion-label class="col-11 m-0 align-middle">Select Exif metadata</ion-label>
+        <div class="col-1">
+          <i class="fa fa-caret-up"></i>
+        </div>
+    </ion-item>
+    <ion-item class="row align-middle" (click)="openModal(gpsMetadataList, gpsMetadataSelected, 'gpsMetadataSelected')">
+        <ion-label class="col-11 m-0 align-middle">Select GPS metadata</ion-label>
+        <div class="col-1">
+          <i class="fa fa-caret-up"></i>
+        </div>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="saveSettings()" slot="end">Save settings</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="resetSettings()" slot="end" color="warning">Reset settings</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

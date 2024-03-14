@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="clear()">Clear</ion-button>
+    </ion-buttons>
+    <ion-title>Select metadata</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar
+    showClearButton="focus"
+    placeholder="Filter by name"
+    (ionInput)="filterList($event)"
+    [debounce]="200"
+  ></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let selectOption of filteredOptions" (click)="checkElementEvent(selectOption)">
+      <ion-checkbox [checked]="checkedOptions.indexOf(selectOption) > -1" aria-label="" slot="start" (click)="checkElementEvent(selectOption)"></ion-checkbox>
+      <ion-label>{{selectOption}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
